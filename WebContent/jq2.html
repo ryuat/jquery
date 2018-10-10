@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+// 	var p= document.getElementsByTagName("p");
+	var p = $("p")
+// 	alert(p.length);
+	$("p").eq(1).css("color","blue"); // INDEX 1 
+	
+	
+	$("p").eq($("p").index($(".kbs"))).css("color","yellow");
+	var arr =$("h1~p")
+	console.log("배열의 크기: " + arr.length);
+	
+//	alert("$(p) 길이: " + $("p").length);
+	
+// 	alert($("p").length);
+	for(i=0; i<$("p").length;i++){
+		//alert("$('p').index('kbs'): " + $('p').index($(".kbs")));
+	}
+	var result = "";
+	for(var i=0; i < arr.length; i++){
+// 		result += arr[i].innerHTML + ", ";
+// 		result += arr[i].innerText + ", ";
+		result += $(arr[i]).text() + ", "; // 윗 문장과 동일한 의미 
+	}
+	//alert("result : " +  result)
+
+	var arr2 = $("p:not(.kbs)"); // p중 .kbs가 아닌 것
+// 	alert("배열크기:" +arr2.length);
+	
+	$("b").prepend("<h2>요소추가(기존요소 앞)</h2>");
+// 	$("<h2>요소추가(기존요소 앞)</h2>").prependTo("b");
+	$("b").append("<h2>요소추가(기존요소 뒤)</h2>")
+// 	$("<h2>요소추가(기존요소 뒤)</h2>").appendTo("b");
+	
+	var arr3 = "";
+	$("li").each(function(){  // li 태그를 순회하면서 func 적용
+		arr3 += $(this).html() + ", ";
+	});
+	//alert(arr3);
+	
+	// 사용자 정의 선택자
+	$("tbody tr:odd").css("color", "grey");
+	$("tbody tr:even").css("color", "red");
+	$("tbody tr:eq(1)").css("background", "yellow");
+	$("tbody tr:gt(3)").css("background", "cyan");
+	$("tbody tr:lt(2)").css("background", "orange");
+	$("tbody tr:contains('한국인6')").css("background", "green");
+});
+</script>
+</head>
+<body>
+<p>jQuery test </p>
+<h1>요소배열</h1>
+<p><i>p요소1</i>
+<p>p요소2</p>
+<p class="kbs">p요소3</p>
+<hr>
+문서에 문자열 추가 <br>
+<b style="background: orange;">대한민국</b>
+<hr>
+<ul>
+<li><i>윈도우</i></li>
+<li><i>리눅스</i></li>
+<li><i>IOS</i></li>
+</ul>
+
+<hr>
+<table style="border:1px solid;">
+	<thead>
+		<tr><th>이름</th><th>전화</th><tr>
+	</thead>
+	<tbody>
+		<tr><th>한국인1</th><th>11-11</th></tr>
+		<tr><th>한국인2</th><th>11-12</th></tr>
+		<tr><th>한국인3</th><th>11-13</th></tr>
+		<tr><th>한국인4</th><th>11-14</th></tr>
+		<tr><th>한국인5</th><th>11-15</th></tr>
+		<tr><th>한국인6</th><th>11-16</th></tr>
+	</tbody>
+</table>
+</body>
+</html>
