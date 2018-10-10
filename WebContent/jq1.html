@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	.korea{font-size: 50px}
+	.kor{color: yellow}
+</style>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script>
+// window.onload = function(){ // 이미지와 사운드 모두 읽어온 후 실행
+// 	alert("nice"); 
+// }
+// $(document).ready(function(){  // 텍스트만 읽어온 후 실행 (속도가 빠름)
+// 	alert("success");
+// });
+// jQuery(document).ready(function(){ // $대신 jQuery 사용 가능 
+// 	alert("success2")
+// });
+
+$(document).ready(function(){
+	$("*").css("border", "1px solid #D8D8D8"); // 모든 태그에 border 설정   
+	$("span").css("border", "3px dotted blue");
+	$("#content").css("background-color", "lightgrey"); // id
+	$(".my").css("border", "5px dotted yellow"); // class 
+	$("i > .my").css("color", "red");
+})
+$(document).ready(function(){
+	$(".kor").css("color", "blue").addClass("korea"); // 메서드 체인
+});
+// $(function(){
+// 	alert("이렇게 쓰는 것도 가능.") // 이렇게 쓰는 것도 가능
+// });
+</script>
+</head>
+<body>
+<h2>JQUERY TEST</h2>
+<p class="my"> (p class:my)가을이 점점 깊어가고 </p>
+<div>
+	<div id="content">(div id:content)곧 눈도 오지 않을까?</div>
+</div>
+<span> (span) 강남 거리</span>
+<i><span class="my">(i > span class:my)쌀쌀한 날씨</span></i>
+<b class="kor">(b class:kor)</b>
+</body>
+</html>
