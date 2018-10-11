@@ -3,9 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+.foc{background-color:#bbb;}
+
+</style>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script type="text/javascript">
+$(document).ready(function(){
+	$("label").css("color", "#a12");
+	$("h2").css({"color":"white","background-color":"red"}); // 여러 css 속성 설정 
+	$("#message").wrap("<h1/>"); // id가 message인 태그를 h1태그로 감싼다.
 
+	// 이벤트 
+// 	$("input").focus(function(){ // input 태그들 중 focus가 될 경우 foc 클래스 추가
+// 		$(this).addClass("foc");
+// 	});
+	$("input").on("focus", function(){ // 위 코드와 동일
+		$(this).addClass("foc");
+	})
+	$("input").blur(function(){ // input 태그들 중 focus를 잃을 경우 foc 클래스 삭제 
+		$(this).removeClass("foc");
+	});
+	
+// 	$("#frm").on("submit", function(){
+		
+// 	})
+	
+	$("#frm").submit(function(event){
+		event.preventDefault(); // 고유 이벤트(submit ?, action ?)가 해제
+		
+		var new_ele = "<li>" + $("#data").val() + "</li>";
+		$("#disp").append(new_ele);
+	});
+	
+	$("a").click(function(event){
+		event.preventDefault();
+		alert("aa");
+	})
+}) ;
 </script>
 </head>
 <body>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+// 	$("#sang").keydown(function(e){
+// 		console.log(".keydown  : " +  e.keyCode);
+// 	})
+// 	$("#sang").on("keydown", function(e){
+// 		console.log("on  : " +  e.keyCode);
+// 	})
+	$("#sang").bind("keydown", function(e){
+		//console.log("bind : " + e.keyCode);
+		if(e.keyCode == 13){
+			if($("#sang").val() === ""){
+				alert("품명을 입력하시오");
+				return;
+			}else if(isNaN($("#sang").val())== false){ // isNaN: numeric으로 변환 불가 => false
+				alert("문자만 입력 가능");
+				$("#sang").val("");
+				return;
+			}else{
+				$("#su").focus();
+			}
+		}
+	})
+	
+	$("#su").bind("keydown", function(e){
+		//console.log("bind : " + e.keyCode);
+		if(e.keyCode == 13){ // code 13: enter
+			if($("#su").val() === ""){
+				alert("수량을 입력하시오");
+				return;
+			}else if(isNaN($("#su").val())==true){ // isNaN: numeric으로 변환 불가 => false
+				alert("숫자만 입력 가능");
+				$("#su").val("");
+				return;
+			}else{
+				$("#su").focus();
+			}
+		}
+	})
+
+	$("#dan").bind("keydown", function(e){
+		if(e.keyCode == 13){ // code 13: enter
+			$("#disp").empty();
+			$("#disp").append(
+				$("#sang").val() + "의 금액: " + ($("#su").val() * $("#dan").val())
+			);
+		}
+	});
+	
+	$("#clear").bind("click", function(){
+		$("#sang").val("");
+		$("#su").val("");
+		$("#dan").val("");
+		$("#disp").val("");
+		$("#sang").focus();	
+	});
+});
+
+</script>
+</head>
+<body>
+* 자료입력 * <br>
+<form action='#'>
+품명: <input type="text" id="sang"><br>
+수량: <input type="text" id="su"><br>
+단가: <input type="text" id="dan"><br>
+</form>
+<button id="clear">초기화</button>
+<hr>
+<div id="disp"></div>
+</body>
+</html>
